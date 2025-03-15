@@ -16,6 +16,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 400px;
+    position: relative;
 }
 
 .page {
@@ -53,7 +54,6 @@ input, select {
     max-width: 200px;
 }
 
-/* 新增范围输入框样式 */
 #range-min, #range-max {
     width: 35%;
     max-width: 80px;
@@ -95,4 +95,53 @@ input, select {
     display: inline-block;
     font-size: 2em;
     animation: smile 0.5s ease-in-out;
+}
+
+/* 奖励动画 - 星星效果 */
+#reward-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.star {
+    position: absolute;
+    font-size: 2em;
+    color: #ffd700;
+    animation: star-fall 1.5s ease-out forwards;
+}
+
+@keyframes star-fall {
+    0% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(50px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* 错题重新练习按钮样式 */
+.retry-btn {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    margin-left: 10px;
+    background-color: #98fb98; /* 浅绿色 */
+}
+
+.retry-btn:hover {
+    background-color: #32cd32; /* 深绿色 */
+    color: white;
 }

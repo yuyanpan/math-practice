@@ -25,6 +25,8 @@
                 <span> - </span>
                 <input type="number" id="range-max" placeholder="最大值" min="1">
             </div><br>
+            <label>题目数量：</label>
+            <input type="number" id="question-count" placeholder="输入题目数" min="1" value="10"><br>
             <label>运算类型：</label>
             <select id="operator">
                 <option value="add">加法</option>
@@ -39,12 +41,12 @@
         <!-- 练习页面 -->
         <div id="practice" class="page" style="display: none;">
             <h2>练习模式</h2>
-            <p>剩余时间：<span id="timer">10:00</span></p>
-            <button id="pause-btn" onclick="togglePause()">暂停</button>
+            <p>进度：<span id="progress">0/10 (正确率: 0%)</span></p>
             <p id="question"></p>
             <input type="number" id="answer" placeholder="输入答案">
             <button onclick="submitAnswer()">提交</button>
             <div id="feedback"></div>
+            <div id="reward-animation" class="hidden"></div> <!-- 奖励动画容器 -->
             <button onclick="showHome()">结束练习</button>
         </div>
 
