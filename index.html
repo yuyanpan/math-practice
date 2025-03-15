@@ -29,11 +29,11 @@
                 <option value="6">六年级</option>
             </select><br>
             <label>数值范围：</label>
-            <select id="range">
-                <option value="0-10">0-10</option>
-                <option value="0-20">0-20</option>
-                <option value="0-100">0-100</option>
-            </select><br>
+            <div>
+                <input type="number" id="range-min" placeholder="最小值" min="0">
+                <span> - </span>
+                <input type="number" id="range-max" placeholder="最大值" min="1">
+            </div><br>
             <label>运算类型：</label>
             <select id="operator">
                 <option value="add">加法</option>

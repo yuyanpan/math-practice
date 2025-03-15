@@ -32,6 +32,12 @@ function showWrongQuestions() {
 
 // 开始练习
 function startPractice() {
+    const min = parseInt(document.getElementById("range-min").value) || 0;
+    const max = parseInt(document.getElementById("range-max").value) || 100;
+    if (min >= max) {
+        alert("最小值必须小于最大值！");
+        return;
+    }
     timeLeft = 600;
     isPaused = false;
     document.getElementById("pause-btn").textContent = "暂停";
@@ -41,16 +47,16 @@ function startPractice() {
 // 生成题目
 function generateQuestion() {
     const grade = document.getElementById("grade").value;
-    const range = document.getElementById("range").value;
+    const min = parseInt(document.getElementById("range-min").value) || 0;
+    const max = parseInt(document.getElementById("range-max").value) || 100;
     const operator = document.getElementById("operator").value;
 
-    let maxNum;
-    if (range === "0-10") maxNum = 10;
-    else if (range === "0-20") maxNum = 20;
-    else maxNum = 100;
+    // 确保最小值小于最大值
+    const rangeMin = Math.min(min, max);
+    const rangeMax = Math.max(min, max);
 
-    let num1 = Math.floor(Math.random() * (maxNum + 1));
-    let num2 = Math.floor(Math.random() * (maxNum + 1));
+    let num1 = Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
+    let num2 = Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
     let question, answer;
 
     switch (operator) {
@@ -124,7 +130,7 @@ function displayWrongQuestions() {
 function clearWrongQuestions() {
     if (confirm("确定要清空错题集吗？此操作不可恢复！")) {
         localStorage.removeItem("wrongQuestions");
-        displayWrongQuestions(); // 刷新显示
+        displayWrongQuestions();
     }
 }
 

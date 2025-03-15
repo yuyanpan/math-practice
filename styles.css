@@ -53,26 +53,14 @@ input, select {
     max-width: 200px;
 }
 
-#feedback {
-    color: #ff4500;
-    font-size: 1.2em;
-    min-height: 30px;
-}
-
-/* 笑脸动画 */
-@keyframes smile {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.smile {
+/* 新增范围输入框样式 */
+#range-min, #range-max {
+    width: 35%;
+    max-width: 80px;
     display: inline-block;
-    font-size: 2em;
-    animation: smile 0.5s ease-in-out;
+    margin: 0 5px;
 }
 
-/* 移动端适配 */
 @media (max-width: 600px) {
     #container {
         padding: 15px;
@@ -85,4 +73,26 @@ input, select {
         font-size: 0.9em;
         padding: 8px;
     }
+    #range-min, #range-max {
+        width: 30%;
+        max-width: 70px;
+    }
+}
+
+#feedback {
+    color: #ff4500;
+    font-size: 1.2em;
+    min-height: 30px;
+}
+
+@keyframes smile {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.smile {
+    display: inline-block;
+    font-size: 2em;
+    animation: smile 0.5s ease-in-out;
 }
