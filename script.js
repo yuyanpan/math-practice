@@ -21,7 +21,7 @@ function showPractice() {
     document.getElementById("settings").style.display = "none";
     document.getElementById("practice").style.display = "block";
     startTimer();
-    generateQuestion();
+    generateQuestion(); // 确保进入练习页面时生成题目
 }
 
 function showWrongQuestions() {
@@ -32,12 +32,16 @@ function showWrongQuestions() {
 
 // 开始练习
 function startPractice() {
-    const min = parseInt(document.getElementById("range-min").value) || 0;
-    const max = parseInt(document.getElementById("range-max").value) || 100;
-    if (min >= max) {
-        alert("最小值必须小于最大值！");
+    const minInput = document.getElementById("range-min").value;
+    const maxInput = document.getElementById("range-max").value;
+    const min = minInput === "" ? 0 : parseInt(minInput); // 未输入时默认 0
+    const max = maxInput === "" ? 100 : parseInt(maxInput); // 未输入时默认 100
+
+    if (isNaN(min) || isNaN(max) || min >= max) {
+        alert("请确保输入有效的范围，最小值必须小于最大值！");
         return;
     }
+
     timeLeft = 600;
     isPaused = false;
     document.getElementById("pause-btn").textContent = "暂停";
@@ -46,12 +50,12 @@ function startPractice() {
 
 // 生成题目
 function generateQuestion() {
-    const grade = document.getElementById("grade").value;
-    const min = parseInt(document.getElementById("range-min").value) || 0;
-    const max = parseInt(document.getElementById("range-max").value) || 100;
+    const minInput = document.getElementById("range-min").value;
+    const maxInput = document.getElementById("range-max").value;
+    const min = minInput === "" ? 0 : parseInt(minInput); // 默认 0
+    const max = maxInput === "" ? 100 : parseInt(maxInput); // 默认 100
     const operator = document.getElementById("operator").value;
 
-    // 确保最小值小于最大值
     const rangeMin = Math.min(min, max);
     const rangeMax = Math.max(min, max);
 
@@ -65,7 +69,7 @@ function generateQuestion() {
             answer = num1 + num2;
             break;
         case "subtract":
-            num1 = Math.max(num1, num2);
+            num1 = Math.max(num1, num2); // 确保不生成负数
             num2 = Math.min(num1, num2);
             question = `${num1} - ${num2} = `;
             answer = num1 - num2;
@@ -75,11 +79,14 @@ function generateQuestion() {
             answer = num1 * num2;
             break;
         case "divide":
-            num2 = num2 === 0 ? 1 : num2;
-            num1 = num1 * num2;
+            num2 = num2 === 0 ? 1 : num2; // 避免除以 0
+            num1 = num1 * num2; // 确保整除
             question = `${num1} ÷ ${num2} = `;
             answer = num1 / num2;
             break;
+        default:
+            question = "题目生成错误";
+            answer = 0;
     }
 
     currentQuestion = { question, answer };
@@ -92,6 +99,11 @@ function generateQuestion() {
 function submitAnswer() {
     const userAnswer = parseInt(document.getElementById("answer").value);
     const correctAnswer = currentQuestion.answer;
+
+    if (isNaN(userAnswer)) {
+        document.getElementById("feedback").textContent = "请输入有效答案！";
+        return;
+    }
 
     if (userAnswer === correctAnswer) {
         document.getElementById("feedback").innerHTML = '<span class="smile">😊</span> 正确！';
