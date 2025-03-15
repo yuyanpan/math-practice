@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学生加减法练习</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <!-- 首页 -->
+        <div id="home" class="page">
+            <h1>欢迎使用加减法练习</h1>
+            <p>选择年级和题目类型，开始你的练习吧！</p>
+            <button onclick="showSettings()">开始设置</button>
+            <button onclick="showWrongQuestions()">查看错题集</button>
+        </div>
+
+        <!-- 用户设置页面 -->
+        <div id="settings" class="page" style="display: none;">
+            <h2>练习设置</h2>
+            <label>选择年级：</label>
+            <select id="grade">
+                <option value="1">一年级</option>
+                <option value="2">二年级</option>
+                <option value="3">三年级</option>
+                <option value="4">四年级</option>
+                <option value="5">五年级</option>
+                <option value="6">六年级</option>
+            </select><br>
+            <label>数值范围：</label>
+            <select id="range">
+                <option value="0-10">0-10</option>
+                <option value="0-20">0-20</option>
+                <option value="0-100">0-100</option>
+            </select><br>
+            <label>运算类型：</label>
+            <select id="operator">
+                <option value="add">加法</option>
+                <option value="subtract">减法</option>
+                <option value="multiply">乘法</option>
+                <option value="divide">除法</option>
+            </select><br>
+            <button onclick="startPractice()">开始练习</button>
+            <button onclick="showHome()">返回首页</button>
+        </div>
+
+        <!-- 练习页面 -->
+        <div id="practice" class="page" style="display: none;">
+            <h2>练习模式</h2>
+            <p>剩余时间：<span id="timer">10:00</span></p>
+            <button id="pause-btn" onclick="togglePause()">暂停</button>
+            <p id="question"></p>
+            <input type="number" id="answer" placeholder="输入答案">
+            <button onclick="submitAnswer()">提交</button>
+            <div id="feedback"></div>
+            <button onclick="showHome()">结束练习</button>
+        </div>
+
+        <!-- 错题集页面 -->
+        <div id="wrong-questions" class="page" style="display: none;">
+            <h2>错题集</h2>
+            <ul id="wrong-list"></ul>
+            <button onclick="clearWrongQuestions()">清空错题集</button>
+            <button onclick="showHome()">返回首页</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
