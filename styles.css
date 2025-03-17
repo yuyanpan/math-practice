@@ -140,3 +140,6 @@ input, select {
     background-color: #32cd32;
     color: white;
 }
+#answer {
+    margin-top: 10px; /* 与题目保持间距 */
+}
