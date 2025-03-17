@@ -63,20 +63,17 @@ input, select {
 
 @media (max-width: 600px) {
     #container {
-        padding: 15px;
-        width: 95%;
+        padding: 10px; /* 增加内边距 */
     }
-    h1, h2 {
-        font-size: 1.2em;
+    #question {
+        font-size: 1.1em; /* 小屏幕调整字体 */
     }
-    button, input, select {
-        font-size: 0.9em;
-        padding: 8px;
-    }
-    #range-min, #range-max {
-        width: 30%;
-        max-width: 70px;
-    }
+}
+
+#question {
+    font-size: 1.2em; /* 确保文字大小适中 */
+    margin: 10px 0;  /* 留出空间 */
+    min-height: 30px; /* 防止元素高度不足 */
 }
 
 #feedback {
@@ -97,7 +94,6 @@ input, select {
     animation: smile 0.5s ease-in-out;
 }
 
-/* 奖励动画 - 星星效果 */
 #reward-animation {
     position: absolute;
     top: 0;
@@ -133,15 +129,14 @@ input, select {
     }
 }
 
-/* 错题重新练习按钮样式 */
 .retry-btn {
     padding: 5px 10px;
     font-size: 0.9em;
     margin-left: 10px;
-    background-color: #98fb98; /* 浅绿色 */
+    background-color: #98fb98;
 }
 
 .retry-btn:hover {
-    background-color: #32cd32; /* 深绿色 */
+    background-color: #32cd32;
     color: white;
 }

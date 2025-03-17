@@ -21,6 +21,7 @@ function showPractice() {
     document.getElementById("settings").style.display = "none";
     document.getElementById("wrong-questions").style.display = "none";
     document.getElementById("practice").style.display = "block";
+    generateQuestion(); // 确保显示时生成题目
 }
 
 function showWrongQuestions() {
@@ -52,7 +53,6 @@ function startPractice() {
     consecutiveCorrect = 0;
     updateProgress();
     showPractice();
-    generateQuestion();
 }
 
 // 生成题目并朗读
